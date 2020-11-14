@@ -3005,11 +3005,13 @@ export default {
       let dummyColors = this.shadePalette.filter((color) => {
         return color.name === 'white'
       })
-      if (dummyColors.length > 1) {
-        this.nameFeedback = 'please complete the Palette first'
-        if (this.paletteName === null) {
-          this.nameFeedback = 'please name your Palette first'
-        }
+      if (
+        dummyColors.length > 1 ||
+        this.paletteName === null ||
+        this.paletteName === ''
+      ) {
+        this.nameFeedback =
+          'please complete the Palette first and Give it a valid name'
       } else {
         axios
           .post(

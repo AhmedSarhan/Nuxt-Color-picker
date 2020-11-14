@@ -121,7 +121,7 @@ export default {
           this.copiedColor = this.HexToRGb(color)
         } else if (this.newFormat === 'hsl - 0°, 54%, 50%') {
           this.$copyText(this.hexToHSL(color))
-          this.copiedColor = color
+          this.copiedColor = this.hexToHSL(color)
         } else {
           this.$copyText(color)
           this.copiedColor = color
