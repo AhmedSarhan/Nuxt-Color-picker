@@ -10,6 +10,7 @@ import ThePalettesHeader from '@/components/Navigation/ThePalettesHeader.vue';
 // import PalettePreview from '@/components/Palettes/PalettePreview.vue';
 import PalettePreview from '@/components/Palettes/PalettePreview.vue';
 import ColorPicker from '@/components/Palettes/ColorPicker.vue';
+// import Draggable from 'vuedraggable';
 
 Vue.component('MyNav', MyNav);
 Vue.component('MyNavMenu', MyNavMenu);
@@ -19,3 +20,4 @@ Vue.component('MyToolBar', MyToolBar);
 Vue.component('ThePalettesHeader', ThePalettesHeader);
 Vue.component('PalettePreview', PalettePreview);
 Vue.component('ColorPicker', ColorPicker);
+// Vue.component('draggable', Draggable);

@@ -1,7 +1,7 @@
 <template>
   <div>
     <ThePalettesHeader @changed="formatChanged" v-if="isPalette" />
-    <div class="large-palette-container" :class="isCreating ? 'creating' : ''">
+    <div class="large-palette-container">
       <div
         class="copied-color-modal"
         :class="isCopying ? 'copying' : ''"
@@ -15,23 +15,11 @@
         :key="index"
         class="palette-color"
         :style="{ backgroundColor: color.color }"
-        :class="isCreating ? 'creating' : ''"
         @click="doCopy(color.color)"
       >
         <v-row class="copy-container" align="center" justify="space-around">
-          <v-btn outlined color="white" class="copy-btn" v-if="!isCreating"
-            >Copy</v-btn
-          >
+          <v-btn outlined color="white" class="copy-btn">Copy</v-btn>
           <p class="label white-text">{{ color.name }}</p>
-          <v-btn
-            class="delete-btn transparent black--text"
-            depressed
-            flat
-            v-if="isCreating"
-            @click="deleteColor(index)"
-          >
-            <v-icon>delete</v-icon>
-          </v-btn>
           <v-btn
             :color="color.color"
             depressed
@@ -48,6 +36,7 @@
 </template>
 
 <script>
+import hexToHsl from 'hex-to-hsl'
 export default {
   data() {
     return {
@@ -74,10 +63,6 @@ export default {
       default: false,
     },
     isPalette: {
-      type: Boolean,
-      default: false,
-    },
-    isCreating: {
       type: Boolean,
       default: false,
     },
@@ -134,6 +119,9 @@ export default {
         } else if (this.newFormat === 'rgb - (244, 244, 244)') {
           this.$copyText(this.HexToRGb(color))
           this.copiedColor = this.HexToRGb(color)
+        } else if (this.newFormat === 'hsl - 0°, 54%, 50%') {
+          this.$copyText(this.hexToHSL(color))
+          this.copiedColor = color
         } else {
           this.$copyText(color)
           this.copiedColor = color
@@ -179,6 +167,50 @@ export default {
           'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',1)'
         )
       }
+    },
+    hexToHSL(color) {
+      color = color.replace('#', '')
+      let r = parseInt(color.substring(0, 2), 16)
+      let g = parseInt(color.substring(2, 4), 16)
+      let b = parseInt(color.substring(4, 6), 16)
+
+      // Make r, g, and b fractions of 1
+      r /= 255
+      g /= 255
+      b /= 255
+
+      // Find greatest and smallest channel values
+      let cmin = Math.min(r, g, b),
+        cmax = Math.max(r, g, b),
+        delta = cmax - cmin,
+        h = 0,
+        s = 0,
+        l = 0
+      // Calculate hue
+      // No difference
+      if (delta == 0) h = 0
+      // Red is max
+      else if (cmax == r) h = ((g - b) / delta) % 6
+      // Green is max
+      else if (cmax == g) h = (b - r) / delta + 2
+      // Blue is max
+      else h = (r - g) / delta + 4
+
+      h = Math.round(h * 60)
+
+      // Make negative hues positive behind 360°
+      if (h < 0) h += 360
+      // Calculate lightness
+      l = (cmax + cmin) / 2
+
+      // Calculate saturation
+      s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1))
+
+      // Multiply l and s by 100
+      s = +(s * 100).toFixed(1)
+      l = +(l * 100).toFixed(1)
+
+      return 'hsl(' + h + '\u00B0, ' + s + '%, ' + l + '%)'
     },
     deleteColor(index) {
       this.shadePalette.splice(index, 1)
@@ -272,23 +304,10 @@ export default {
   width: 15%;
 }
 
-.palette-color.creating {
-  border: 1px solid #ccc;
-  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-    0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12) !important;
-}
-.large-palette-container.creating {
-  width: 70%;
-}
 @media (max-width: 700px) {
   .large-palette-container .palette-color .copy-container .copy-btn,
   .large-palette-container .copy-container .label {
     display: none;
-  }
-}
-@media only screen and (min-width: 120px) and (max-width: 1024) {
-  .large-palette-container.creating {
-    width: 100% !important;
   }
 }
 </style>

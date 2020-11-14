@@ -19,11 +19,15 @@
       <v-row>
         <v-form ref="form" v-model="valid" lazy-validation class="mt-5">
           <v-select
-            class="copy-format"
+            class="copy-format primary--text"
             v-model="select"
+            filled
+            solo
+            color="primary"
             :items="items"
             :rules="[(v) => !!v || 'Item is required']"
             required
+            prefix="Copy Format: "
             @change="changeFormat"
           >
           </v-select>
@@ -45,6 +49,7 @@ export default {
         'Hex- f4f4f4',
         'rgb - (244, 244, 244)',
         'rgba - (244, 244, 244, 0.7)',
+        'hsl - 0°, 54%, 50%',
       ],
     }
   },
