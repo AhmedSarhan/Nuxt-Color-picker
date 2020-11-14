@@ -45,17 +45,12 @@ export default {
     }
   },
 
-  methods: {
-    // pullData() {
-    //   console.log(this.palettes)
-    // },
-  },
+  methods: {},
   mounted() {
     axios
       .get(process.env.baseUrl + '/paletts.json')
       .then((response) => {
         this.palettes = Object.values(response.data)
-        console.log(response.data)
       })
       .catch((res) => {
         if (!res.response) {

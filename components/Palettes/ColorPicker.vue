@@ -82,15 +82,12 @@ export default {
       if (this.valid === true && this.colorName !== null) {
         this.dummyColor.name = this.colorName.toLowerCase()
         this.dummyColor.color = this.newColor
-        console.log(this.dummyColor)
-        // this.shadePalette.unshift(this.dummyColor)
         this.shadePalette.splice(0, 0, this.dummyColor)
         this.shadePalette.splice(20, 1)
         this.dummyColor = {
           name: 'white',
           color: '#ffffff',
         }
-        console.log(this.dummyColor)
       } else {
         return false
       }
@@ -99,7 +96,6 @@ export default {
       if (this.paletteName === null) {
         alert('please name your Palette first')
 
-        //   console.log(this.shadePalette)
         let dummyColors = this.shadePalette.filter((color) => {
           return color.name === 'white'
         })

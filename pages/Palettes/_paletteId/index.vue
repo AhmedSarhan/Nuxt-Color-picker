@@ -49,7 +49,6 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.newColorFormat)
     axios
       .get(process.env.baseUrl + '/paletts/.json')
       .then((res) => {

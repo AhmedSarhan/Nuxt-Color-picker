@@ -45,17 +45,12 @@ export default {
         .paletteColors.filter(
           (color) => slugify(color.name) === this.$route.params.colorId
         )[0]
-      //   console.log(this.color)
       for (let k = 10; k >= -8; k--) {
-        // for (let x = 0; x <= 19; x++) {
-        // console.log(k)
         let newColor = {
           name: this.color.name + ' ' + k * 50,
           color: this.adjust(this.color.color, k * 15),
         }
-        // console.log(newColor)
         this.shadePalette.push(newColor)
-        // console.log(this.shadePalette)
       }
       for (let x = 0; x < this.shadePalette.length; x++) {
         this.shadePalette[x].name = this.color.name + ' ' + x * 50
