@@ -93,14 +93,13 @@ export default {
       }
     },
     createPalette() {
-      if (this.paletteName === null) {
-        alert('please name your Palette first')
-
-        let dummyColors = this.shadePalette.filter((color) => {
-          return color.name === 'white'
-        })
-        if (dummyColors.length > 1) {
-          alert('please complete the Palette first')
+      let dummyColors = this.shadePalette.filter((color) => {
+        return color.name === 'white'
+      })
+      if (dummyColors.length > 1) {
+        alert('please complete the Palette first')
+        if (this.paletteName === null) {
+          alert('please name your Palette first')
         }
       } else {
         axios
