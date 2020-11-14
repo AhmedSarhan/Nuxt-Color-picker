@@ -4,7 +4,7 @@
 
     <v-spacer></v-spacer>
 
-    <TheMainNavMenu class="hidden-md-and-down" />
+    <MyNavMenu class="hidden-md-and-down" />
   </v-toolbar>
 </template>
 

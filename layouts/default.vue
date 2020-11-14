@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <TheMainNavBar />
+    <MyNav />
     <v-main>
       <Nuxt />
     </v-main>

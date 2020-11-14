@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <TheMainToolbar />
-    <TheSideDrawer />
+    <MyToolBar />
+    <MySideDrawer />
   </nav>
 </template>
 

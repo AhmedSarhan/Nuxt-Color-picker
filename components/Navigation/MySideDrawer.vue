@@ -10,7 +10,7 @@
       temporary
       class="primary white--text"
     >
-      <TheMainNavMenu class="mt-5 white--text" />
+      <MyNavMenu class="mt-5 white--text" />
     </v-navigation-drawer>
   </div>
 </template>
