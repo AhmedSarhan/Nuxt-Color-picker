@@ -100,9 +100,9 @@ export default {
         alert('please name your Palette first')
 
         //   console.log(this.shadePalette)
-        // let dummyColors = this.shadePalette.filter((color) => {
-        //   return color.name === 'white'
-        // })
+        let dummyColors = this.shadePalette.filter((color) => {
+          return color.name === 'white'
+        })
         if (dummyColors.length > 1) {
           alert('please complete the Palette first')
         }
