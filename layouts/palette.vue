@@ -7,12 +7,7 @@
 </template>
 
 <script>
-import TheHeader from '@/components/Navigation/TheHeader'
-export default {
-  components: {
-    TheHeader,
-  },
-}
+export default {}
 </script>
 
 <style>

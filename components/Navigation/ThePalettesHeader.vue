@@ -11,7 +11,7 @@
         <span>Back</span>
       </v-btn>
 
-      <v-toolbar-title class="grey lighten-3 pa-5"
+      <v-toolbar-title class="myBrand grey lighten-3 pa-5"
         >Nuxt Ui Colors</v-toolbar-title
       >
 
@@ -62,5 +62,13 @@ export default {
 }
 .back-btn {
   height: 100% !important;
+}
+.myBrand {
+  display: block;
+}
+@media (max-width: 992px) {
+  .myBrand {
+    display: none;
+  }
 }
 </style>

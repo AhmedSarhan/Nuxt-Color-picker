@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <TheHeader />
+    <TheMainNavBar />
     <v-main>
       <Nuxt />
     </v-main>
@@ -8,12 +8,7 @@
 </template>
 
 <script>
-import TheHeader from '@/components/Navigation/TheHeader'
-export default {
-  components: {
-    TheHeader,
-  },
-}
+export default {}
 </script>
 
 <style>
