@@ -99,7 +99,7 @@ export default {
         return color.name !== 'white'
       })
       let dublicateColors = addedColors.filter((color) => {
-        return color.name === this.colorName
+        return color.name === this.colorName.toLowerCase()
       })
       if (
         this.valid === true &&
