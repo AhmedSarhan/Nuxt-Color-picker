@@ -210,7 +210,7 @@ export default {
       s = Math.round(+(s * 100).toFixed(1))
       l = Math.round(+(l * 100).toFixed(1))
 
-      return 'hsl(' + h + '\u00B0, ' + s + '%, ' + l + '%)'
+      return 'hsl(' + h + ', ' + s + '%, ' + l + '%)'
     },
     deleteColor(index) {
       this.shadePalette.splice(index, 1)
