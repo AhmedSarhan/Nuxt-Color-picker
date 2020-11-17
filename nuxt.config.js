@@ -27,9 +27,6 @@ export default {
   pageTransition: {
     name: 'fade',
     mode: 'out-in',
-    beforeEnter(el) {
-      console.log('Before enter...');
-    },
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['~assets/styles/main.css'],

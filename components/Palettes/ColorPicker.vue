@@ -2996,8 +2996,6 @@ export default {
         }
         this.shadePalette.splice(0, 0, randomizedColor)
         this.shadePalette.splice(20, 1)
-        console.log(this.shadePalette)
-        console.log('that random shit you just created', randomizedColor)
       }
     },
 

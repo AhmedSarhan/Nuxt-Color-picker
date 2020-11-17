@@ -85,16 +85,15 @@ export default {
   },
   methods: {
     deleteColor(name) {
-      console.log('deleting')
-      this.newPalette.splice(name, 1)
-      console.log('deleted')
+      let colorIndex = this.newPalette.findIndex((color) => {
+        return color.name === name
+      })
+      this.newPalette.splice(colorIndex, 1)
       let dummyColor = {
         name: 'white',
         color: '#ffffff',
       }
       this.newPalette.push(dummyColor)
-      console.log('added')
-      console.log(this.newPalette)
     },
   },
   computed: {},
