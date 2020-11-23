@@ -20,26 +20,8 @@ export default {
       copiedColorbkg: '',
     }
   },
-
-  methods: {
-    adjust(color, amount) {
-      return (
-        '#' +
-        color
-          .replace(/^#/, '')
-          .replace(/../g, (color) =>
-            (
-              '0' +
-              Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(
-                16
-              )
-            ).substr(-2)
-          )
-      )
-    },
-  },
-  mounted() {
-    axios.get(process.env.baseUrl + '/paletts/.json').then((res) => {
+  async fetch() {
+    await axios.get(process.env.baseUrl + '/paletts/.json').then((res) => {
       this.color = Object.values({ ...res.data })
         .filter((palette) => palette.id === this.$route.params.paletteId)[0]
         .paletteColors.filter(
@@ -57,6 +39,24 @@ export default {
       }
     })
   },
+  methods: {
+    adjust(color, amount) {
+      return (
+        '#' +
+        color
+          .replace(/^#/, '')
+          .replace(/../g, (color) =>
+            (
+              '0' +
+              Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(
+                16
+              )
+            ).substr(-2)
+          )
+      )
+    },
+  },
+  mounted() {},
 }
 </script>
 

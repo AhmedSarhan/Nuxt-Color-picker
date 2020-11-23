@@ -2999,7 +2999,7 @@ export default {
       }
     },
 
-    createPalette() {
+    async createPalette() {
       let dummyColors = this.shadePalette.filter((color) => {
         return color.name === 'white'
       })
@@ -3011,7 +3011,7 @@ export default {
         this.nameFeedback =
           'please complete the Palette first and Give it a valid name'
       } else {
-        axios
+        await axios
           .post(
             process.env.baseUrl + '/paletts.json',
             /* what you wanna push in there */ {

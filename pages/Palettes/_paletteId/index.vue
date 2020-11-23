@@ -48,13 +48,12 @@ export default {
       )
     },
   },
-  mounted() {
-    axios
+  async fetch() {
+    await axios
       .get(process.env.baseUrl + '/paletts/.json')
       .then((res) => {
         let loadedPalettes = {}
         loadedPalettes = { ...res.data }
-
         this.palettes = Object.values(loadedPalettes).filter(
           (palette) => palette.id === this.$route.params.paletteId
         )
@@ -77,19 +76,20 @@ export default {
       .catch((res) => {
         if (!res.response) {
           console.error(res)
-          context.error({
+          console.error({
             statusCode: 404,
             message: 'Failed to receive content form api',
           })
         } else {
           console.error(res.response.data)
-          context.error({
+          console.error({
             statusCode: res.response.status,
             message: res.response.data,
           })
         }
       })
   },
+  mounted() {},
   computed: {},
 }
 </script>

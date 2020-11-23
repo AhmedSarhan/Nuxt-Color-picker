@@ -44,30 +44,29 @@ export default {
       palettes: [],
     }
   },
-
-  methods: {},
-  mounted() {
-    axios
+  async fetch() {
+    await axios
       .get(process.env.baseUrl + '/paletts.json')
-      .then((response) => {
-        this.palettes = Object.values(response.data)
+      .then((res) => {
+        this.palettes = Object.values(res.data)
       })
       .catch((res) => {
         if (!res.response) {
           console.error(res)
-          context.error({
+          console.error({
             statusCode: 404,
             message: 'Failed to receive content form api',
           })
         } else {
           console.error(res.response.data)
-          context.error({
+          console.error({
             statusCode: res.response.status,
             message: res.response.data,
           })
         }
       })
   },
+  methods: {},
 }
 </script>
 
